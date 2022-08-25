@@ -1,0 +1,556 @@
+<html>
+	<head>
+		<title>Nice to Know about C Language</title>
+		<script>
+			var SlideGenerator = function(slideTitle){
+				let object = this;
+				
+				this.slideTitle = slideTitle;
+				this.pageNumber = 0;
+				this.isShowTitle = true;
+				
+				this.generate = function(){
+					this.getPageNumber();
+					this.generateHeader();
+				}
+				
+				this.getPageNumber = function(){
+					this.pageNumber = document.getElementsByClassName('page').length;
+				}
+				
+				this.generateHeader = function(){
+					if(object.isShowTitle){
+						let slideTitle = document.getElementsByClassName('slideTitle');
+						for(let title of slideTitle){
+							title.innerHTML = object.slideTitle;
+							console.log(title);
+						}
+					}
+					let pageCounter = document.getElementsByClassName('pageCounter');
+					let i = 1;
+					for(let counter of pageCounter){
+						counter.innerHTML = i+' of '+object.pageNumber; 
+						i += 1;
+					}
+				}
+			}
+			
+			document.addEventListener("DOMContentLoaded", function(){
+				var generator = new SlideGenerator('XimpleSoft Profile');
+				generator.isShowTitle = false;
+				generator.generate();
+			});
+		</script>
+		<style>
+			@font-face{
+				font-family:THSarabun;
+				font-weight:normal;
+				src:url(./font/THSarabunNew.ttf);
+			}
+
+			@font-face{
+				font-family:THSarabun;
+				font-weight:bold;
+				src:url(./font/THSarabunNewBold.ttf);
+			}
+
+			@font-face{
+				font-family:THSarabun;
+				font-weight:normal;
+				font-style:italic;
+				src:url(./font/THSarabunNewItalic.ttf);
+			}
+
+			@font-face{
+				font-family:THSarabun;
+				font-weight:bold;
+				font-style:italic;
+				src:url(./font/THSarabunNewBoldItalic.ttf);
+			}
+			
+			@media screen{
+				body{
+					text-align:center;
+					background:#888;
+					font-size:16px;
+				}
+				
+				#main{
+					margin:10px auto 10px auto;
+					width:1140px;
+				}
+				
+				.page{
+					padding:10px;
+					width:1120px;
+					height:784;
+					border:1px solid #444;
+					box-sizing:border-box;
+					box-shadow:5px 5px 20px #444;
+					margin-bottom:10px;
+				}
+
+				.pageContainer{
+					width:1080;
+					height:724px;
+				}
+
+				th, td{
+					font-size:16px;
+				}
+				
+				ul{
+					padding-left:15px;
+				}
+				
+				.slideContent{
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+			
+			@media print{
+				body {
+					transform: scale(1.0);
+					font-size:18px;
+					margin:0;
+					padding:0;
+				}
+				
+				.page{
+					padding:0;
+					width:1120px;
+					height:784;
+					page-break-after:always;
+				}
+				
+				.pageContainer{
+					width:1100;
+					height:764px;
+				}
+
+				
+				th, td{
+					font-size:22px;
+				}
+				
+				ul{
+					padding-left:22px;
+				}
+				
+				.slideContent{
+					top: 50%;
+					transform: translateY(-40%);
+				}
+			}
+			
+			body{
+				font-family:THSarabun;
+				color:#ddd;
+			}
+			
+			h1{
+				font-size:56px;
+				color:white;
+				text-align:left;
+				border-bottom:3px solid #426900ff;
+				margin:10px auto 10px auto;
+			}
+			
+			ul, ol{
+				font-size:42px;
+				margin:0 0 0 40px;
+			}
+			
+			p, th, td{
+				font-size:48px;
+			}
+			
+			th{
+				background:#479BFE;
+				color:white;
+			}
+			
+			.slideHeader{
+				display:flex;
+				font-size:22px;
+				justify-content:space-between;
+			}
+			
+			.slideContainer{
+				padding:0px 35px;
+				height:560px;
+			}
+			
+			.slideContent{
+				position: relative;
+			}
+			
+			.page{
+				background:url(./image/LondonNight.jpg) 0 0;
+				/* background: green; */
+				background-size:100%;
+				background-repeat:no-repeat;
+				margin-bottom:15px;
+				text-align:left;
+				padding:10px;
+			}
+
+			.pageContainer{
+				/* background:url(./image/XimpleSoftLogo.png) bottom 10px right 10px; */
+				background-repeat:no-repeat;
+				background-color: #111111ee;
+				padding:10px;
+			}
+			
+			.pageCounter{
+				text-align:right;
+				background:#ef011c88;
+				padding:5px 10px;
+				color:white;
+			}
+			
+			.slideTopic{
+				font-size:64px;
+				color:white;
+				text-align:center;
+				margin-top:240px;
+				font-weight:bold;
+				border-bottom:5px solid #426900ff;
+			}
+
+			.slideSubTopic{
+				font-size:48px;
+				color:white;
+				text-align:center;
+			}
+			
+			.infoTable{
+				margin-left:-45px;
+				width:110%;
+				border:1px solid #aaa;
+				border-collapse: collapse;
+			}
+			
+			.infoTable td{
+				border:1px solid #aaa;
+				border-collapse: collapse;
+				padding:3px 8px;
+				vertical-align:top;
+				font-size:36px;
+			}
+			
+			.infoTable ul{
+				margin-left:18px;
+			}
+			
+			.infoTable li{
+				line-height:36px;
+				font-size:36px;
+			}
+			
+			.infoTable tr:nth-child(even){
+				background:white;
+			}
+			
+			.infoTable tr:nth-child(odd){
+				background:#efefef;
+			}
+			
+			.checkedItem, .checkedLessItem{
+				width:16px;
+				height:16px;
+				border-radius:8px;
+				margin-top:20px;
+			}
+			
+			.checkedItem{
+				background:green;
+			}
+			
+			.checkedLessItem{
+				background:#aaa;
+			}
+
+			.inputColumn{
+				background-color: #479BFE;
+				text-align: center;
+			}
+
+			.outputColumn{
+				background-color: orange;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<div class="slideTopic">
+						Nice to Know about C Language
+					</div>
+					<div class="slideSubTopic">
+						2022 by Kittipong Piyawanno
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<div class="slideTopic">
+						What is programming language?
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Enigma Code Breaker from WWII</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/Enigma-Code-Breaker-2.jpg" style="width:80%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Punch Card for IBM-100</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/PunchedCard.webp" style="width:90%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Assembly for x86 CPU</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/x86-Assembly.png" style="width:60%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>John Backus, Inventor of FORTRAN (1954)</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/John_Backus_2.jpg" style="width:35%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Dennis Richie & Ken Thompson, Inventor of C (1972)</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/Ken_Thompson_(sitting)_and_Dennis_Ritchie_at_PDP-11_(2876612463).jpg" style="width:65%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>A Brief History of C Language</h1>
+					<div class="slideContainer">
+						<div class="slideContent">
+							<ul>
+								<li>Influenced by BPCL, ALGOL 68, assembly, FORTRAN</li>
+								<li>Primarily used for development of UNIX</li>
+								<li>Reduced keywords from BPCL</li>
+								<li>Become popular after publishing the book : K&R C (1978)</li>
+								<li>Standard : K&R C, ISO C, C99, C11, C17</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>C vs. Natural Language</h1>
+					<div class="slideContainer">
+						<div class="slideContent">
+							<ul>
+								<li>English : ~171,146 words</li>
+								<li>Chinese : ~7,000 characters, ~106,230 words</li>
+								<li style="margin-bottom: 50px;">C : 32 keywords +-*/{}[]();#&|!=&lt;&gt;'"</li>
+								<li>Grammar vs Syntax</li>
+								<li>Semantic</li>
+								<li>Can you read that? : We are laerning C lagnuage.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>C vs. Ellipse Equation</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/EllipseEquation.png" style="width:65%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<div class="slideTopic">
+						C Language is simple and primitive.
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<div class="slideTopic">
+						Problem solving in C is not.
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Could you learn shuffle dance from reading instruction?</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<iframe width="840" height="472" src="https://www.youtube.com/embed/TC7tjGJO5oI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>About Coding in General</h1>
+					<div class="slideContainer">
+						<div class="slideContent">
+							<ul>
+								<li>Coding is a <span style="color:#880000;font-weight: bolder;text-decoration: underline;">skill</span> not a knowledge.</li>
+								<li>The most jobs : Same problem, repeatedly execution.</li>
+								<li>Coding : Always new problem.</li>
+								<li>Solving all problems with a small set of tools.</li>
+								<li>Still young (Coding ~70 y., Chemistry ~200y., Civil 5,000y.)</li>
+								<li>Hence, the most concepts are still controversial.</li>
+								<li>Challenge : To manage huge Line of Code (LoC) written by many people.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>C Popularity in Last 2 Decades</h1>
+					<div class="slideContainer">
+						<p style="text-align:center;">
+							<img src="image/TIOBE.png" style="width:100%;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Why C is so popular?</h1>
+					<div class="slideContainer">
+						<div class="slideContent">
+							<ul>
+								<li>Concise Syntax</li>
+								<li>Power to control</li>
+								<li>Performance (~30 time faster than Python)</li>
+								<li>Portable (Almost every type of CPU and OS)</li>
+								<li>Play well with others</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="page">
+				<div class="pageContainer">
+					<div class="slideHeader">
+						<div class="slideTitle"></div><div class="pageCounter"></div>
+					</div>
+					<h1>Why not to use C?</h1>
+					<div class="slideContainer">
+						<div class="slideContent">
+							<ul>
+								<li>
+									Power to control : Memory management hell
+									<ul>
+										<li>~30% of bugs from C/C++ are caused by memory management.</li>
+										<li>The most security issues are caused by memory management.</li>
+									</ul>
+								</li>
+								<li>Too primitive (~3 time more LoC, ~5-10 time more dev. time than Python)</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
