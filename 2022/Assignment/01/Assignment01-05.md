@@ -7,7 +7,7 @@ Complexity : 4
 
 Group member : 3
 
-- Group 1 : Polynomial function
-- Group 2 : Exponential function
-- Group 3 : Logarithm function
+- Group 1 : Polynomial function (3021, 3032, 3033)
+- Group 2 : Exponential function (3019, 3029, 3034)
+- Group 3 : Logarithm function (3022, 3024, 3007)
 - Group 4 : Hyperbolic function
