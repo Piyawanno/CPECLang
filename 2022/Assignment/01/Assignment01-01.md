@@ -9,4 +9,4 @@ prime numbers will be stored in array and used as modulus operant.
 
 Complexity : 4
 
-Group member : 3
+Group member : 3 (3012, 3013, 3003)
